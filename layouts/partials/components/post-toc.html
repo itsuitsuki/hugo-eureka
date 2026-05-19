@@ -10,12 +10,24 @@
 <div
   class="sticky-toc {{ if eq .Type "docs" }}
     border-s
-  {{ end }} hidden px-6 pb-6 lg:block"
+  {{ end }}{{ if .Params.tocUnordered }} toc-unordered{{ end }} hidden px-6 pb-6 lg:block"
 >
   {{ .TableOfContents }}
 </div>
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     enableStickyToc();
+    if (typeof renderMathInElement === "function") {
+      document.querySelectorAll(".sticky-toc a").forEach(a => {
+        renderMathInElement(a, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true }
+          ]
+        });
+      });
+    }
   });
 </script>

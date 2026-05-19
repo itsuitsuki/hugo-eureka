@@ -26,6 +26,10 @@
   @apply mt-6;
 }
 
+.toc-unordered ol {
+  @apply list-disc;
+}
+
 .object-contain {
   object-fit: contain !important;
 }
