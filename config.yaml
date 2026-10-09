@@ -3,7 +3,6 @@ build:
 
 module:
   imports:
-    - path: wangchucheng.com/hugo-marble/search
     - path: wangchucheng.com/hugo-marble/utils
     - path: github.com/FortAwesome/Font-Awesome
       mounts:
