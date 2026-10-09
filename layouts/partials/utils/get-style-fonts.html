@@ -1,4 +1,4 @@
-{{ $style := (index .context.Site.Data.styles (.context.Site.Params.style | default "default")) }}
+{{ $style := (index hugo.Data.styles (.context.Site.Params.style | default "default")) }}
 {{ $result := slice }}
 {{ range $style.fonts }}
   {{ $item := index . $.param }}

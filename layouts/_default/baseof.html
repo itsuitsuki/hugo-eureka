@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
-  lang="{{ .Site.LanguageCode }}"
-  dir="{{ .Site.Language.LanguageDirection | default "ltr" }}"
+  lang="{{ .Site.Language.Locale }}"
+  dir="{{ .Site.Language.Direction | default "ltr" }}"
   {{ if eq .Site.Params.colorScheme "dark" }}class="dark"{{ end }}
 >
   {{- partial "head" . }}

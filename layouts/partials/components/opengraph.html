@@ -22,7 +22,7 @@
 {{ end }}
 {{ end }}
 
-{{ with .Site.LanguageCode }}
+{{ with .Site.Language.Locale }}
 <meta property="og:locale" content="{{ . }}" />
 {{ end }}
 {{ if .IsTranslated }}

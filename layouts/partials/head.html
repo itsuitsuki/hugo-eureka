@@ -52,7 +52,7 @@
 {{ end }}
 <title>{{ partial "get-title" . }}</title>
 
-<meta name="generator" content="Hugo Eureka {{ .Site.Data.eureka.version }}" />
+<meta name="generator" content="Hugo Eureka {{ hugo.Data.eureka.version }}" />
 
 {{- $eurekaCSS := resources.Get "css/eureka.css" | postCSS (dict "config" "./assets/css/postcss.config.js" "inlineImports" true) | resources.ExecuteAsTemplate "css/eureka.css" . | minify | fingerprint "sha384" }}
 <link rel="stylesheet" href="{{ $eurekaCSS.Permalink }}">
@@ -75,7 +75,7 @@
   as="style" onload="this.onload=null;this.rel='stylesheet'">
 {{ end }}
 
-{{- $assets := .Site.Data.assets }}
+{{- $assets := hugo.Data.assets }}
 
 {{/* highlight */}}
 {{- if eq .Site.Params.highlight.handler "chroma" }}
@@ -155,15 +155,17 @@
 {{- end }}
 {{- end }}
 
-{{- if and .Site.GoogleAnalytics hugo.IsProduction }}
+{{- with site.Config.Services.GoogleAnalytics.ID }}
+{{- if hugo.IsProduction }}
 <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '{{ .Site.GoogleAnalytics }}');
+  gtag('config', '{{ . }}');
 </script>
+{{- end }}
 {{- end }}
 
 {{/*  Custom Head  */}}
