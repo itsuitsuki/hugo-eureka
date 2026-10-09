@@ -2,6 +2,9 @@
   <a href="{{ .Permalink }}" class="no-underline">
     <h3 class="mt-0">{{ .LinkTitle }}</h3>
   </a>
+  {{ with .Params.subtitle }}
+    <div class="not-prose text-secondary-text mb-3" data-subtitle>{{ . }}</div>
+  {{ end }}
   {{ if .Description }}
     {{ .Description | plainify | htmlUnescape }}
   {{ else if .Summary }}
