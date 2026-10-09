@@ -17,13 +17,13 @@
     <div class="me-6 my-2">
       <i class="fas fa-folder me-1"></i>
       {{ range $index, $value := . }}
-        {{ if gt $index 0 }}
+        {{- if gt $index 0 -}}
           <span>, </span>
-        {{ end -}}
+        {{- end -}}
         <a href="{{ (site.GetPage "/series").RelPermalink }}#{{ anchorize . }}" class="hover:text-eureka"
           >{{ . }}</a
         >
-      {{ end }}
+      {{- end }}
     </div>
   {{ end }}
 
@@ -31,13 +31,13 @@
     <div class="me-6 my-2">
       <i class="fas fa-th-list me-1"></i>
       {{ range $index, $value := . }}
-        {{ if gt $index 0 }}
+        {{- if gt $index 0 -}}
           <span>, </span>
-        {{ end -}}
+        {{- end -}}
         <a href="{{ .Permalink }}" class="hover:text-eureka"
           >{{ .LinkTitle }}</a
         >
-      {{ end }}
+      {{- end }}
     </div>
   {{ end }}
 </div>
