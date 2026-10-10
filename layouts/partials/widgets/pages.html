@@ -11,7 +11,7 @@
 
 {{ define "partials/widgets/pages-get" }}
   {{- $section := .Site.GetPage .Params.section }}
-  {{ $pages := $section.Pages }}
+  {{ $pages := $section.Pages.ByLastmod.Reverse }}
   {{ $count := .Params.count | default 5 }}
   {{ with $count }}
     {{ $pages = first $count $pages }}
